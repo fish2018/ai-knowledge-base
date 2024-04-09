@@ -12,7 +12,7 @@
 - use_persist
 文档持久化到本地向量库
 - document_path
-文档目录，支持txt、pdf、docx、csv等
+文档目录，支持txt、pdf、docx、csv等，默认`./files`目录
 
 ## 版本
 - python 3.11.9
