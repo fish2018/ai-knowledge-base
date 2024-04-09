@@ -29,12 +29,6 @@ from langchain.storage import InMemoryStore
 import os
 from dotenv import load_dotenv
 
-# 免费key只能用gpt-3.5-turbo
-os.environ["OPENAI_API_KEY"] = "KEY"
-os.environ["OPENAI_API_BASE"] = "https://api.chatanywhere.com.cn/v1"
-load_dotenv()
-
-# from langchain_core.vectorstores import VectorStore
 # 重写VectorstoreIndexCreator相关类方法，使用MultiQueryRetriever
 class VectorStoreIndexWrapper1(VectorStoreIndexWrapper):
     verbose = False
@@ -92,6 +86,10 @@ class VectorstoreIndexCreator1(VectorstoreIndexCreator):
 
 class QA:
     def __init__(self, document_path='./files/', use_persist=True, verbose=False, multi=False):
+        # 免费key只能用gpt-3.5-turbo
+        os.environ["OPENAI_API_KEY"] = "KEY"
+        os.environ["OPENAI_API_BASE"] = "https://api.chatanywhere.com.cn/v1"
+        load_dotenv()
         self.llm = ChatOpenAI(
             model_name="gpt-3.5-turbo",
             temperature=0,
